@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.2.0](https://github.com/orhun/git-cliff/compare/v0.1.0..0.2.0) - 2023-09-28
+## [0.2.1](https://github.com/orhun/git-cliff/compare/v0.2.0..0.2.1) - 2023-09-28
+
+### 🐛 Bug Fixes
+
+- Remove aarch64-unknown-linux-gnu since for now - ([9e24098](https://github.com/orhun/git-cliff/commit/9e240985eac20cce2e7dd18dba20dde4d5dbbd7b))
+
+## [0.2.0](https://github.com/orhun/git-cliff/compare/v0.1.0..v0.2.0) - 2023-09-28
 
 ### ⛰️  Features
 
@@ -11,6 +17,10 @@ All notable changes to this project will be documented in this file.
 ### 🐛 Bug Fixes
 
 - Disable tokio_console - ([72e843f](https://github.com/orhun/git-cliff/commit/72e843fac2e1696cf035a8acd89301c06249a209))
+
+### ⚙️ Miscellaneous Tasks
+
+- Release echo version 0.2.0 - ([e054609](https://github.com/orhun/git-cliff/commit/e054609f4075d4112b73434269cc63d455384165))
 
 ## [0.1.0] - 2023-09-27
 
