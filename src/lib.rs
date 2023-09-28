@@ -3,7 +3,6 @@ use std::net::SocketAddr;
 use thiserror::Error;
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tracing::info;
-use tracing_subscriber::prelude::*;
 
 #[derive(Error, Debug)]
 pub enum EchoError {
@@ -16,11 +15,18 @@ pub enum EchoError {
 #[tracing::instrument]
 pub async fn echo(socket: SocketAddr) -> Result<(), EchoError> {
     // Setup tracing.
-    let console_layer = console_subscriber::spawn();
-    tracing_subscriber::registry()
-        .with(console_layer) // Add the console layer to the registry.
-        .with(tracing_subscriber::fmt::layer()) // Add the fmt layer to the registry.
+    tracing_subscriber::fmt()
+        .with_max_level(tracing::Level::DEBUG)
         .init();
+    //
+    // Use the below instead for tokio-console debugging.
+    //
+    // use tracing_subscriber::prelude::*;
+    // let console_layer = console_subscriber::spawn();
+    // tracing_subscriber::registry()
+    //     .with(console_layer) // Add the console layer to the registry.
+    //     .with(tracing_subscriber::fmt::layer()) // Add the fmt layer to the registry.
+    //     .init();
 
     // Create a TCP listener which will listen for incoming connections.
     let listener = tokio::net::TcpListener::bind(socket).await?;
@@ -45,7 +51,7 @@ pub async fn echo(socket: SocketAddr) -> Result<(), EchoError> {
     Ok(())
 }
 
-#[tracing::instrument]
+#[tracing::instrument(fields(remote.socket = connection.peer_addr()?.to_string()), skip(connection))]
 async fn handle_connection(mut connection: tokio::net::TcpStream) -> Result<(), EchoError> {
     info!("Connected");
 
@@ -56,7 +62,7 @@ async fn handle_connection(mut connection: tokio::net::TcpStream) -> Result<(), 
         let size = connection.read_to_end(&mut buf).await?;
 
         if size == 0 {
-            info!("Connection closed by peer");
+            info!("Disconnected");
             return Ok(());
         }
 
