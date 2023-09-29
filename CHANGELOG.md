@@ -2,11 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.2.4](https://github.com/orhun/git-cliff/compare/v0.2.3..0.2.4) - 2023-09-29
+## [0.2.5](https://github.com/orhun/git-cliff/compare/v0.2.4..0.2.5) - 2023-09-29
+
+### 🐛 Bug Fixes
+
+- Remove 5 connection limit - ([110c7f6](https://github.com/orhun/git-cliff/commit/110c7f64e5b5d37024565677b3f02eaefb88fa4f))
+
+## [0.2.4](https://github.com/orhun/git-cliff/compare/v0.2.3..v0.2.4) - 2023-09-29
 
 ### 🐛 Bug Fixes
 
 - Remove different builds to speed up releases - ([881d28d](https://github.com/orhun/git-cliff/commit/881d28d7719d230eb48c0d1224f57eb90c64a945))
+
+### ⚙️ Miscellaneous Tasks
+
+- Release echo version 0.2.4 - ([e1330ee](https://github.com/orhun/git-cliff/commit/e1330eed7897787627c252537c082387ab70ae16))
 
 ## [0.2.3](https://github.com/orhun/git-cliff/compare/v0.2.2..v0.2.3) - 2023-09-29
 
