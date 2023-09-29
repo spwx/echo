@@ -59,7 +59,7 @@ async fn handle_connection(mut connection: tokio::net::TcpStream) -> Result<(), 
     let mut buf = vec![0_u8; 1024];
 
     loop {
-        let size = connection.read_to_end(&mut buf).await?;
+        let size = connection.read(&mut buf).await?;
 
         if size == 0 {
             info!("Disconnected");
