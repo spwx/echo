@@ -18,7 +18,7 @@ pub async fn echo(socket: SocketAddr) -> Result<(), EchoError> {
     tracing_subscriber::fmt()
         .with_max_level(tracing::Level::DEBUG)
         .init();
-    //
+
     // Use the below instead for tokio-console debugging.
     //
     // use tracing_subscriber::prelude::*;
@@ -31,24 +31,10 @@ pub async fn echo(socket: SocketAddr) -> Result<(), EchoError> {
     // Create a TCP listener which will listen for incoming connections.
     let listener = tokio::net::TcpListener::bind(socket).await?;
 
-    // Create a vector to hold task handles.
-    let mut handles = Vec::new();
-
-    // Accept 5 connections.
-    for _ in 0..5 {
+    loop {
         let (connection, _) = listener.accept().await?;
-        let handle = tokio::spawn(async move { handle_connection(connection).await });
-        handles.push(handle);
+        tokio::spawn(async move { handle_connection(connection).await }).await??;
     }
-
-    // Wait for all handles to finish.
-    for handle in handles {
-        // The first `?` unwraps the `JoinHandle`'s `Result`.
-        // The second `?` unwraps the `handle_connection`'s `Result`.
-        handle.await??;
-    }
-
-    Ok(())
 }
 
 #[tracing::instrument(fields(remote.socket = connection.peer_addr()?.to_string()), skip(connection))]
