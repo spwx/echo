@@ -1,7 +1,7 @@
 use std::net::SocketAddr;
 
 use thiserror::Error;
-use tokio::io::{AsyncReadExt, AsyncWriteExt};
+use tokio::io::copy;
 use tracing::info;
 
 #[derive(Error, Debug)]
@@ -55,19 +55,8 @@ pub async fn echo(socket: SocketAddr) -> Result<(), EchoError> {
 async fn handle_connection(mut connection: tokio::net::TcpStream) -> Result<(), EchoError> {
     info!("Connected");
 
-    // Create a buffer to read data from the socket into.
-    let mut buf = vec![0_u8; 1024];
+    let (mut reader, mut writer) = connection.split();
+    copy(&mut reader, &mut writer).await?;
 
-    loop {
-        let size = connection.read(&mut buf).await?;
-
-        if size == 0 {
-            info!("Disconnected");
-            return Ok(());
-        }
-
-        info!("{size} bytes read");
-        connection.write_all(&buf).await?;
-        buf.clear();
-    }
+    Ok(())
 }
