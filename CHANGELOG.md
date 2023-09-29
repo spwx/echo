@@ -2,11 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.2.1](https://github.com/orhun/git-cliff/compare/v0.2.0..0.2.1) - 2023-09-28
+## [0.2.2](https://github.com/orhun/git-cliff/compare/v0.2.1..0.2.2) - 2023-09-29
+
+### ⛰️  Features
+
+- Immediately read any received data - ([b00833c](https://github.com/orhun/git-cliff/commit/b00833ce3d376ae70f9b27f69c7bf47f8544fa34))
+
+## [0.2.1](https://github.com/orhun/git-cliff/compare/v0.2.0..v0.2.1) - 2023-09-28
 
 ### 🐛 Bug Fixes
 
 - Remove aarch64-unknown-linux-gnu since for now - ([9e24098](https://github.com/orhun/git-cliff/commit/9e240985eac20cce2e7dd18dba20dde4d5dbbd7b))
+
+### ⚙️ Miscellaneous Tasks
+
+- Release echo version 0.2.1 - ([dec5cfc](https://github.com/orhun/git-cliff/commit/dec5cfc3697a24710c6f884b7cdb28e9fcf5f406))
 
 ## [0.2.0](https://github.com/orhun/git-cliff/compare/v0.1.0..v0.2.0) - 2023-09-28
 
