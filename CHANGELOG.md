@@ -2,11 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.2.3](https://github.com/orhun/git-cliff/compare/v0.2.2..0.2.3) - 2023-09-29
+## [0.2.4](https://github.com/orhun/git-cliff/compare/v0.2.3..0.2.4) - 2023-09-29
+
+### 🐛 Bug Fixes
+
+- Remove different builds to speed up releases - ([881d28d](https://github.com/orhun/git-cliff/commit/881d28d7719d230eb48c0d1224f57eb90c64a945))
+
+## [0.2.3](https://github.com/orhun/git-cliff/compare/v0.2.2..v0.2.3) - 2023-09-29
 
 ### 🐛 Bug Fixes
 
 - Try using copy - ([230d84c](https://github.com/orhun/git-cliff/commit/230d84c8b14959d2513230ab2e75f565538292aa))
+
+### ⚙️ Miscellaneous Tasks
+
+- Release echo version 0.2.3 - ([45ac709](https://github.com/orhun/git-cliff/commit/45ac70943e06594acb5c3b48da22ed7c7ae7e2cb))
 
 ## [0.2.2](https://github.com/orhun/git-cliff/compare/v0.2.1..v0.2.2) - 2023-09-29
 
